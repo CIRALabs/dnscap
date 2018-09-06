@@ -25,7 +25,7 @@ The database has the following schema:
 
 For example:
 
-insert into hosts values (0, "cnn.com", 0, "all", 0, 0, 1);
+    insert into hosts values (0, "cnn.com", 0, "all", 0, 0, 1);
 
 This would cause dnscap to look for cnn.com and add output ACL entries
 for any transport protocol.  Direction initiated is outbound.  Source
