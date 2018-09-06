@@ -128,6 +128,20 @@ AC_CHECK_FUNC([p_rcode],
 )
 AC_CHECK_FUNCS([__assertion_failed])
 
+# determine whether to build aclm
+AC_ARG_ENABLE(aclm,AC_HELP_STRING([--enable-aclm],[Access List Manager]))
+case $enable_aclm in
+   yes)
+      aclm=true;
+      AC_CHECK_LIB([sqlite3],[sqlite3_open_v2])
+      AC_CHECK_HEADERS([sqlite3.h])
+      AC_CONFIG_FILES([plugins/aclm/Makefile])
+      ;;
+   *)
+      ;;
+esac
+AM_CONDITIONAL([ACLM],[test x$aclm = xtrue])
+
 # Check for SECCOMP
 SECCOMPFLAGS=
 AC_ARG_ENABLE(seccomp, AC_HELP_STRING([--enable-seccomp], [Linux seccomp-bpf sandbox]))
